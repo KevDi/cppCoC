@@ -34,3 +34,7 @@ TEST_F(Player, LoadDataSetsTheName) {
 TEST_F(Player, LoadDataSetsTheExpLevel) {
     ASSERT_THAT(player_.expLevel(), Eq(42));
 }
+
+TEST_F(Player, LoadDataSetsTheTownhallLevel) {
+    ASSERT_THAT(player_.townhall_level(), Eq(13));
+}

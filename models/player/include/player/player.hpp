@@ -17,6 +17,7 @@ namespace jd {
                 std::string tag() const;
                 std::string name() const;
                 int expLevel() const;
+                int townhall_level() const;
                 void load_data(std::string_view data);
 
                private:
