@@ -48,6 +48,6 @@ namespace jd::coc::model {
         pimpl_->name = json_data["name"].get<std::string>();
         pimpl_->exp_level = json_data["expLevel"].get<int>();
         pimpl_->townhall_level = json_data["townHallLevel"].get<int>();
-        pimpl_->townhall_weapon_level = json_data["townHallWeaponLevel"].get<int>();
+        pimpl_->townhall_weapon_level = json_data.value("townHallWeaponLevel", 0);
     }
 }  // namespace jd::coc::model

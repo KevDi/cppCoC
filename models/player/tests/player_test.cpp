@@ -42,3 +42,17 @@ TEST_F(Player, LoadDataSetsTheTownhallLevel) {
 TEST_F(Player, LoadDataSetsTownhallWeaponLevel) {
     ASSERT_THAT(player_.townhall_weapon_level(), Eq(5));
 }
+
+TEST_F(Player, LoadDataSetsTownhallWeaponLevelToZeroIfNotFound) {
+    std::ifstream ifile{"resource/player_alternative.json"};
+    std::string example;
+    ifile.seekg(0, std::ios::end);
+    example.reserve(ifile.tellg());
+    ifile.seekg(0, std::ios::beg);
+
+    example.assign((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
+
+    player_.load_data(example);
+
+    ASSERT_THAT(player_.townhall_weapon_level(), Eq(0));
+}
