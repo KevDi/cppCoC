@@ -19,3 +19,6 @@ TEST(Player, TagIsSetAfterLoadingTheData) {
 
     ASSERT_THAT(player.tag(), Eq("#123456789"));
 }
+
+TEST(Player, ABC) {
+}
