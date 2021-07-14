@@ -17,9 +17,14 @@ namespace jd::coc::model {
         return name_;
     }
 
+    int Player::expLevel() const {
+        return expLevel_;
+    }
+
     void Player::load_data(std::string_view data) {
         json json_data = json::parse(data);
         tag_ = json_data["tag"].get<std::string>();
         name_ = json_data["name"].get<std::string>();
+        expLevel_ = json_data["expLevel"].get<int>();
     }
 }  // namespace jd::coc::model

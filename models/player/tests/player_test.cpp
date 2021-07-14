@@ -30,3 +30,7 @@ TEST_F(Player, TagIsSetAfterLoadingTheData) {
 TEST_F(Player, NameIsSetAfterLoadingTheData) {
     ASSERT_THAT(player_.name(), Eq("User"));
 }
+
+TEST_F(Player, ExpIsSetAfterLoadingTheData) {
+    ASSERT_THAT(player_.expLevel(), Eq(42));
+}
