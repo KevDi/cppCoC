@@ -13,4 +13,8 @@ namespace jd::coc::model {
     std::string Player::tag() const {
         return tag_;
     }
+
+    std::string Player::name() const {
+        return {};
+    }
 }  // namespace jd::coc::model

@@ -10,6 +10,7 @@ namespace jd {
                public:
                 explicit Player(std::string_view data);
                 std::string tag() const;
+                std::string name() const;
 
                private:
                 std::string tag_{};
