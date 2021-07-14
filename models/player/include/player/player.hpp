@@ -9,8 +9,10 @@ namespace jd {
             class Player {
                public:
                 explicit Player(std::string_view data);
+                Player() = default;
                 std::string tag() const;
                 std::string name() const;
+                void load_data(std::string_view data);
 
                private:
                 std::string tag_{};

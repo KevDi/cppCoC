@@ -4,32 +4,29 @@
 #include <player/player.hpp>
 
 using namespace testing;
-using namespace jd::coc::model;
+using namespace jd::coc;
 
-TEST(Player, TagIsSetAfterLoadingTheData) {
-    std::ifstream ifile{"resource/player.json"};
-    std::string example;
-    ifile.seekg(0, std::ios::end);
-    example.reserve(ifile.tellg());
-    ifile.seekg(0, std::ios::beg);
+class Player : public Test {
+   public:
+    void SetUp() override {
+        std::ifstream ifile{"resource/player.json"};
+        std::string example;
+        ifile.seekg(0, std::ios::end);
+        example.reserve(ifile.tellg());
+        ifile.seekg(0, std::ios::beg);
 
-    example.assign((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
+        example.assign((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
 
-    Player player{example};
+        player_.load_data(example);
+    }
 
-    ASSERT_THAT(player.tag(), Eq("#123456789"));
+    model::Player player_{};
+};
+
+TEST_F(Player, TagIsSetAfterLoadingTheData) {
+    ASSERT_THAT(player_.tag(), Eq("#123456789"));
 }
 
-TEST(Player, NameIsSetAfterLoadingTheData) {
-    std::ifstream ifile{"resource/player.json"};
-    std::string example;
-    ifile.seekg(0, std::ios::end);
-    example.reserve(ifile.tellg());
-    ifile.seekg(0, std::ios::beg);
-
-    example.assign((std::istreambuf_iterator<char>(ifile)), std::istreambuf_iterator<char>());
-
-    Player player{example};
-
-    ASSERT_THAT(player.name(), Eq("User"));
+TEST_F(Player, NameIsSetAfterLoadingTheData) {
+    ASSERT_THAT(player_.name(), Eq("User"));
 }
