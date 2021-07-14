@@ -38,3 +38,7 @@ TEST_F(Player, LoadDataSetsTheExpLevel) {
 TEST_F(Player, LoadDataSetsTheTownhallLevel) {
     ASSERT_THAT(player_.townhall_level(), Eq(13));
 }
+
+TEST_F(Player, LoadDataSetsTownhallWeaponLevel) {
+    ASSERT_THAT(player_.townhall_weapon_level(), Eq(5));
+}

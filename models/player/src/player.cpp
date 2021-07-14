@@ -11,6 +11,7 @@ namespace jd::coc::model {
         std::string name{};
         int exp_level{0};
         int townhall_level{0};
+        int townhall_weapon_level{0};
     };
 
     Player::Player() : pimpl_{std::make_unique<PlayerImpl>()} {}
@@ -37,11 +38,16 @@ namespace jd::coc::model {
         return pimpl_->townhall_level;
     }
 
+    int Player::townhall_weapon_level() const {
+        return pimpl_->townhall_weapon_level;
+    }
+
     void Player::load_data(std::string_view data) {
         json json_data = json::parse(data);
         pimpl_->tag = json_data["tag"].get<std::string>();
         pimpl_->name = json_data["name"].get<std::string>();
         pimpl_->exp_level = json_data["expLevel"].get<int>();
         pimpl_->townhall_level = json_data["townHallLevel"].get<int>();
+        pimpl_->townhall_weapon_level = json_data["townHallWeaponLevel"].get<int>();
     }
 }  // namespace jd::coc::model
