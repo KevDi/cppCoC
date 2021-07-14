@@ -16,7 +16,7 @@ namespace jd {
                 ~Player();
                 std::string tag() const;
                 std::string name() const;
-                int expLevel() const;
+                int exp_level() const;
                 int townhall_level() const;
                 void load_data(std::string_view data);
 

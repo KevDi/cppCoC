@@ -9,7 +9,7 @@ namespace jd::coc::model {
     struct Player::PlayerImpl {
         std::string tag{};
         std::string name{};
-        int expLevel{0};
+        int exp_level{0};
         int townhall_level{0};
     };
 
@@ -29,8 +29,8 @@ namespace jd::coc::model {
         return pimpl_->name;
     }
 
-    int Player::expLevel() const {
-        return pimpl_->expLevel;
+    int Player::exp_level() const {
+        return pimpl_->exp_level;
     }
 
     int Player::townhall_level() const {
@@ -41,7 +41,7 @@ namespace jd::coc::model {
         json json_data = json::parse(data);
         pimpl_->tag = json_data["tag"].get<std::string>();
         pimpl_->name = json_data["name"].get<std::string>();
-        pimpl_->expLevel = json_data["expLevel"].get<int>();
+        pimpl_->exp_level = json_data["expLevel"].get<int>();
         pimpl_->townhall_level = json_data["townHallLevel"].get<int>();
     }
 }  // namespace jd::coc::model
