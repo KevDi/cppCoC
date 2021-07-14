@@ -23,14 +23,14 @@ class Player : public Test {
     model::Player player_{};
 };
 
-TEST_F(Player, TagIsSetAfterLoadingTheData) {
+TEST_F(Player, LoadDataSetsTheTag) {
     ASSERT_THAT(player_.tag(), Eq("#123456789"));
 }
 
-TEST_F(Player, NameIsSetAfterLoadingTheData) {
+TEST_F(Player, LoadDataSetsTheName) {
     ASSERT_THAT(player_.name(), Eq("User"));
 }
 
-TEST_F(Player, ExpIsSetAfterLoadingTheData) {
+TEST_F(Player, LoadDataSetsTheExpLevel) {
     ASSERT_THAT(player_.expLevel(), Eq(42));
 }
