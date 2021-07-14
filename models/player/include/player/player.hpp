@@ -14,6 +14,7 @@ namespace jd {
 
                private:
                 std::string tag_{};
+                std::string name_{};
             };
         }  // namespace model
     }      // namespace coc
