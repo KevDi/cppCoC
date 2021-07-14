@@ -1,24 +1,26 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <memory>
 #include <string>
 #include <string_view>
 namespace jd {
     namespace coc {
         namespace model {
             class Player {
+                class PlayerImpl;
+
                public:
                 explicit Player(std::string_view data);
-                Player() = default;
+                Player();
+                ~Player();
                 std::string tag() const;
                 std::string name() const;
                 int expLevel() const;
                 void load_data(std::string_view data);
 
                private:
-                std::string tag_{};
-                std::string name_{};
-                int expLevel_{0};
+                std::unique_ptr<PlayerImpl> pimpl_;
             };
         }  // namespace model
     }      // namespace coc

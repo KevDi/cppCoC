@@ -5,26 +5,37 @@
 using json = nlohmann::json;
 
 namespace jd::coc::model {
-    Player::Player(std::string_view data) {
+
+    struct Player::PlayerImpl {
+        std::string tag{};
+        std::string name{};
+        int expLevel{0};
+    };
+
+    Player::Player() : pimpl_{std::make_unique<PlayerImpl>()} {}
+
+    Player::Player(std::string_view data) : pimpl_{std::make_unique<PlayerImpl>()} {
         load_data(data);
     }
 
+    Player::~Player() = default;
+
     std::string Player::tag() const {
-        return tag_;
+        return pimpl_->tag;
     }
 
     std::string Player::name() const {
-        return name_;
+        return pimpl_->name;
     }
 
     int Player::expLevel() const {
-        return expLevel_;
+        return pimpl_->expLevel;
     }
 
     void Player::load_data(std::string_view data) {
         json json_data = json::parse(data);
-        tag_ = json_data["tag"].get<std::string>();
-        name_ = json_data["name"].get<std::string>();
-        expLevel_ = json_data["expLevel"].get<int>();
+        pimpl_->tag = json_data["tag"].get<std::string>();
+        pimpl_->name = json_data["name"].get<std::string>();
+        pimpl_->expLevel = json_data["expLevel"].get<int>();
     }
 }  // namespace jd::coc::model
